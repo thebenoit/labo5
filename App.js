@@ -1,17 +1,18 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View,TextInput } from "react-native";
+//import { TextInput } from "react-native-web";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 const ButtonBox = () => {
   return (
     <View style={styles.buttonContainer}>
       <TouchableOpacity
-        style={[styles.buttonstyle, { backgroundColor: "#6e7276" }]}
+        style={[styles.buttonStyle, { backgroundColor: "#6e7276" }]}
       >
         <Text style={styles.buttonText}>Annuler</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        style={[styles.buttonstyle, { backgroundColor: "#2199de" }]}
+        style={[styles.buttonStyle, { backgroundColor: "#2199de" }]}
       >
         <Text style={styles.buttonText}>Envoyer</Text>
       </TouchableOpacity>
@@ -19,23 +20,34 @@ const ButtonBox = () => {
   );
 };
 
+const NewMessage = () => {
+
+  return(
+    <View style={styles.container}>
+    <TextInput style={styles.inputStyle}/>
+    <ButtonBox/>
+    </View>
+
+  )
+}
+
 export default function App() {
-  return <ButtonBox />;
+  return <NewMessage/>;
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    //alignItems: "center",
     justifyContent: "center",
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "baseline",
+   alignItems:'flex-end',
   },
-  buttonstyle: {
+  buttonStyle: {
     borderRadius: 5,
     padding: 5,
     margin: 5,
@@ -47,5 +59,14 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     fontSize: 16,
     textAlign: "center",
+  },
+  inputStyle:{
+    backgroundColor: '#f2f3f3',
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
+    width: '95%',
+    height: 40,
+
   },
 });
