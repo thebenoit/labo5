@@ -1,5 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View,TextInput } from "react-native";
+import { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+  TextInput,
+  ScrollView,
+} from "react-native";
+//import { ScrollView } from "react-native-web";
 //import { TextInput } from "react-native-web";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
@@ -20,32 +29,75 @@ const ButtonBox = () => {
   );
 };
 
+const Message = ({ fromYou, text, id }) => {
+  //si fromYou = true
+  if (fromYou === true) {
+    return (
+      //retourne ce texte avec le style messageFromYou
+      //flex-end permet que le message soit à droite
+      <View style={[styles.messageContainer, { alignItems: "flex-end" }]}>
+        <Text style={styles.messageFromYou}>{text}</Text>
+      </View>
+    );
+  } else {
+    //sinon
+    return (
+      //retourne ce texte avec le style messageFromOther
+      //flex-start permet que le message soit à gauche
+      <View style={[styles.messageContainer, { alignItems: "flex-start" }]}>
+        <Text style={styles.messageFromOther}>{text}</Text>
+      </View>
+    );
+  }
+};
 const NewMessage = () => {
-
-  return(
-    <View style={styles.container}>
-    <TextInput style={styles.inputStyle}/>
-    <ButtonBox/>
+  return (
+    <View style={styles.newMessageContainer}>
+      <TextInput style={styles.inputStyle} value="Saisisez votre message" />
+      <ButtonBox />
     </View>
-
-  )
-}
+  );
+};
 
 export default function App() {
-  return <NewMessage/>;
+  const [fromYou, setFromYou] = useState(true);
+  const [messageText, setMessageText] = useState("");
+
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <Message
+          fromYou={true}
+          text="hello my beautiful World🌎 I love you with all my 🫀!"
+        />
+        <Message fromYou={!true} text="hello babe" />
+        <Message fromYou={!true} text="hello babe" />
+        <Message fromYou={true} text="How are you doing?" />
+        <Message fromYou={!true} text="Good u?" />
+
+      </ScrollView>
+      <NewMessage />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    borderWidth: 1,
     backgroundColor: "#fff",
+
     //alignItems: "center",
     justifyContent: "center",
+  },
+  newMessageContainer: {
+    borderWidth: 1,
+    borderColor: "#2199de",
   },
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-   alignItems:'flex-end',
+    alignItems: "flex-end",
   },
   buttonStyle: {
     borderRadius: 5,
@@ -60,13 +112,32 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "center",
   },
-  inputStyle:{
-    backgroundColor: '#f2f3f3',
+  inputStyle: {
+    color: "#6e7276",
+    backgroundColor: "#f2f3f3",
     borderRadius: 10,
     padding: 10,
     margin: 10,
-    width: '95%',
+    width: "95%",
     height: 40,
-
+  },
+  messageContainer: {},
+  messageFromYou: {
+    color: "white",
+    backgroundColor: "#2199de",
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  messageFromOther: {
+    color: "#6e7276",
+    backgroundColor: "#f2f3f3",
+    padding: 10,
+    margin: 10,
+    borderRadius: 10,
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
