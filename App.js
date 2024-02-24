@@ -8,10 +8,76 @@ import {
   TextInput,
   ScrollView,
 } from "react-native";
+import "react-native-get-random-values";
+import { v4 as uuidv4 } from "uuid";
 //import { ScrollView } from "react-native-web";
 //import { TextInput } from "react-native-web";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
+
+const messages = [
+  {
+    text: "hello",
+    from: "you",
+  },
+  {
+    text: "Est-ce que tu va mieux qu'hier soir ?",
+    from: "Solange"
+  },
+  {
+      text: "Ouais, j'ai pris des 💊. J'arrive à penser à autre chose.",
+      from: "you"
+  },
+  {
+    text: "Veux-tu aller prendre un ☕️ au Tim en bas de chez toi ?",
+    from: "Solange"
+  },
+  {
+    text: "Je crois que j'ai plus besoin d'aller prendre une 🚶‍♀️",
+    from: "you"
+  },
+  {
+    text: "hello",
+    from: "you",
+  },
+  {
+    text: "Est-ce que tu va mieux qu'hier soir ?",
+    from: "Solange"
+  },
+  {
+      text: "Ouais, j'ai pris des 💊. J'arrive à penser à autre chose.",
+      from: "you"
+  },
+  {
+    text: "Veux-tu aller prendre un ☕️ au Tim en bas de chez toi ?",
+    from: "Solange"
+  },
+  {
+    text: "Je crois que j'ai plus besoin d'aller prendre une 🚶‍♀️",
+    from: "you"
+  },
+  {
+    text: "hello",
+    from: "you",
+  },
+  {
+    text: "Est-ce que tu va mieux qu'hier soir ?",
+    from: "Solange"
+  },
+  {
+      text: "Ouais, j'ai pris des 💊. J'arrive à penser à autre chose.",
+      from: "you"
+  },
+  {
+    text: "Veux-tu aller prendre un ☕️ au Tim en bas de chez toi ?",
+    from: "Solange"
+  },
+  {
+    text: "Je crois que j'ai plus besoin d'aller prendre une 🚶‍♀️",
+    from: "you"
+  }
+]
+ 
 const ButtonBox = () => {
   return (
     <View style={styles.buttonContainer}>
@@ -30,6 +96,7 @@ const ButtonBox = () => {
 };
 
 const Message = ({ fromYou, text, id }) => {
+  
   //si fromYou = true
   if (fromYou === true) {
     return (
