@@ -16,10 +16,19 @@ import { v4 as uuidv4 } from "uuid";
 import { Colors } from "react-native/Libraries/NewAppScreen";
 
 let tabInit = [];
-
+/**
+ * composante Message qui contient
+ * d'ou vient le message
+ * le text
+ * et iD
+ * en parametre
+ * @param {*} param0 
+ * @returns 
+ */
 const Message = ({ fromYou, text, id }) => {
-  //si fromYou = true
+  //si le message viens de toi
   if (fromYou === "you") {
+    //éxecute
     return (
       //retourne ce texte avec le style messageFromYou
       //flex-end permet que le message soit à droite
@@ -38,7 +47,12 @@ const Message = ({ fromYou, text, id }) => {
     );
   }
 };
-
+/**
+ * composante qui contient le textInput et les boutons annuler et envoyer
+ * qui permet d'envoyer un nouveau message
+ * @param {*} param0 
+ * @returns 
+ */
 const NewMessage = ({ textInput, textChanged, ajouterMessage }) => {
   return (
     <View style={styles.newMessageContainer}>
@@ -55,7 +69,11 @@ const NewMessage = ({ textInput, textChanged, ajouterMessage }) => {
   );
 };
 
-
+/**
+ * composante qui contient les boutons annuler et envoyer
+ * @param {*} param0 
+ * @returns 
+ */
 const ButtonBox = ({ text, ajout,textChanged }) => {
   return (
     <View style={styles.buttonContainer}>
@@ -76,7 +94,11 @@ const ButtonBox = ({ text, ajout,textChanged }) => {
   );
 };
 
-
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
 const Conversation = ({ tabMessages }) => {
   
     tabInit = tabMessages.map((message) => (
