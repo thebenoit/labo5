@@ -156,7 +156,6 @@ export default function App() {
   const ajout = (t) =>{
     tabInit.push(<Message fromYou={'you'} text={t} key={uuidv4()}/>);
     setListeMessage((tabInit) => [...tabInit, <Message fromYou={'you'} text={t} key={uuidv4()}/>])
-    Alert.alert(` ${tabInit.length} + ${t}`);
     //après l'envoie effacer les text
     setTextInput("")
   };
